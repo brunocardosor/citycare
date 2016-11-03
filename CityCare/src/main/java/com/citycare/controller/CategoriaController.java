@@ -20,6 +20,6 @@ public class CategoriaController {
 	@RequestMapping(value="/adicionaProduto")
 	public String adicionaCategoria(Categoria categoria){
 		cr.save(categoria);
-		return null;
+		return formCategoriaCadastro();
 	}
 }
