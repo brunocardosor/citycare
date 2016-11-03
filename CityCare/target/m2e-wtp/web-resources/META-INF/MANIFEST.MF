@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: CityCare
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: lenilson
+Implementation-Vendor-Id: com.citycare
+Build-Jdk: 1.8.0_111
+Implementation-URL: http://projects.spring.io/spring-boot/CityCare/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
