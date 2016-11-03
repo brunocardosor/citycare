@@ -15,6 +15,7 @@ public class Usuario {
 	private String cpf;
 	private String senha;
 	private String email;
+	private boolean status;
 	public Long getId() {
 		return id;
 	}
@@ -45,6 +46,6 @@ public class Usuario {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	private boolean status;
+	
 
 }

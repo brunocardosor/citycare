@@ -12,14 +12,14 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaRepository cr;
 	
-	@RequestMapping(value="/Cadastro")
-	public String formCadastro(){
+	@RequestMapping(value="/C_Cadastro")
+	public String formCategoriaCadastro(){
 		return "/categoria/Cadastro";
 	}
 	
 	@RequestMapping(value="/adicionaProduto")
 	public String adicionaCategoria(Categoria categoria){
 		cr.save(categoria);
-		return formCadastro();
+		return null;
 	}
 }

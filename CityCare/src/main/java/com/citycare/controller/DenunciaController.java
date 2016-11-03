@@ -12,8 +12,8 @@ public class DenunciaController {
 	@Autowired
 	private DenunciaRepository dr;
 	
-	@RequestMapping(value="/Cadastro")
-	public String formCadastro(){
+	@RequestMapping(value="/D_Cadastro")
+	public String formDenunciaCadastro(){
 		return "/denuncia/Cadastro";
 	}
 	
