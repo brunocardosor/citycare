@@ -19,8 +19,8 @@ private Long id;
 	private String senha;
 	@Column(name="email", nullable = false)
 	private String email;
-	@Column(name="status", columnDefinition = "BIT(1) default 1")
-	private boolean status;
+	@Column(name="status", columnDefinition = "boolean default true")
+	private boolean status=true;
 	public Long getId() {
 		return id;
 	}
