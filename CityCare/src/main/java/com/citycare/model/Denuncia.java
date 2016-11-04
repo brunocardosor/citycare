@@ -1,5 +1,6 @@
 package com.citycare.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,9 +12,9 @@ public class Denuncia {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+	@Column(name="descricao", nullable=false)
 	private String descricao;
-	
+	@Column(name="localizacao", nullable=false)
 	private String localizacao;
 	
 	public Long getId() {

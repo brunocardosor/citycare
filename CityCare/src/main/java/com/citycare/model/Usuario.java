@@ -1,5 +1,6 @@
 package com.citycare.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,14 +8,18 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "cpf" }))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "cpf", "email" }))
 public class Usuario {
 	@Id
 	@GeneratedValue
-	private Long id;
+private Long id;
+	@Column(name="cpf", nullable = false)
 	private String cpf;
+	@Column(name="senha", nullable = false)
 	private String senha;
+	@Column(name="email", nullable = false)
 	private String email;
+	@Column(name="status", columnDefinition = "BIT(1) default 1")
 	private boolean status;
 	public Long getId() {
 		return id;

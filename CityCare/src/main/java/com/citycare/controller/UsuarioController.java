@@ -21,7 +21,6 @@ public class UsuarioController {
 	@RequestMapping(value="adicionaUsuario")
 	public String adicionaUsuario(Usuario usuario){
 		ur.save(usuario);
-		usuario.setStatus(true);
 		return formUsuarioCadastro();
 	}
 }
