@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
 <title>Cadastro de Denuncia</title>
@@ -15,6 +15,7 @@
 			Categoria: <br/>
 			<select name="categoria">
 				<option>Selecione a Categoria</option>
+				<option th:each="valor : ${todosValoresCategoria}" th:value="${valor}" th:text="${valor.descricao}"></option>
 			</select>
 			<input type="submit" value="Enviar Denuncia"/>	
 		</form>

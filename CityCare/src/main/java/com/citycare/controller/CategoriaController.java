@@ -17,6 +17,8 @@ public class CategoriaController {
 		return "/categoria/Cadastro";
 	}
 	
+	
+	
 	@RequestMapping(value="/adicionaCategoria")
 	public String adicionaCategoria(Categoria categoria){
 		cr.save(categoria);
