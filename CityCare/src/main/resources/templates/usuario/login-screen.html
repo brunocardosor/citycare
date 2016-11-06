@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>CityCare</title>
+</head>
+<body>
+<h2>Bem Vindo ao CityCare</h2>
+	<div th:if="${!#strings.isEmpty(mensagem)}">
+		<span> Senha ou Login incorretos </span>		
+	</div>
+	<form action="efetuaLogin" method="post">
+		Login:<input type="text" name="email"/><br/>
+		Senha:<input type="password" name="senha"/><br/>
+		<input type="submit" value="Entrar"/>
+	</form>
+</body>
+</html>

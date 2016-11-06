@@ -10,17 +10,29 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "cpf", "email" }))
 public class Usuario {
+	
 	@Id
 	@GeneratedValue
-private Long id;
+	private Long id;
+	
 	@Column(name="cpf", nullable = false)
 	private String cpf;
+	
 	@Column(name="senha", nullable = false)
 	private String senha;
+	
 	@Column(name="email", nullable = false)
 	private String email;
+	
+	@Column(name="nome", nullable = false)
+	private String nome;
+	
+	@Column(name="sobrenome", nullable = false)
+	private String sobrenome;
+	
 	@Column(name="status", columnDefinition = "boolean default true")
 	private boolean status=true;
+	
 	public Long getId() {
 		return id;
 	}
@@ -44,6 +56,18 @@ private Long id;
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getSobrenome() {
+		return sobrenome;
+	}
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
 	public boolean isStatus() {
 		return status;
