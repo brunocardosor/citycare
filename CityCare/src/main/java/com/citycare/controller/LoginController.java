@@ -12,6 +12,7 @@ import com.citycare.model.Usuario;
 
 @Controller
 public class LoginController {
+	
 	@Autowired
 	private LoginRepository lr;
 	
@@ -22,8 +23,9 @@ public class LoginController {
 	
 	@RequestMapping(value="efetuaLogin")
 	public ModelAndView login(String email, String senha){
-		List<Usuario> user = lr.findByEmailAndSenha(email, senha);
-		if(user.size() == 1){
+		List<Usuario> usuario = lr.findByEmailAndSenha(email, senha);
+		Usuario usr = new Usuario(usuario);
+		if(usuario.size() == 1){
 		ModelAndView mv = new ModelAndView("/denuncia/Cadastro");
 		return mv;
 		} else {

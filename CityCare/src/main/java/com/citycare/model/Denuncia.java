@@ -41,4 +41,17 @@ public class Denuncia {
 	@ManyToOne
 	@JoinColumn(name="categoria_id")
 	private Categoria categoria;
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 }

@@ -14,8 +14,8 @@
 			<input type="text" name="localizacao"/><br/>
 			Categoria: <br/>
 			<select name="categoria">
-				<option>Selecione a Categoria</option>
-				<option th:each="valor : ${todosValoresCategoria}" th:value="${valor}" th:text="${valor.descricao}"></option>
+				<option >Selecione a Categoria</option>
+				<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
 			</select>
 			<input type="submit" value="Enviar Denuncia"/>	
 		</form>
