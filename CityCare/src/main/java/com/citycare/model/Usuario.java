@@ -1,7 +1,5 @@
 package com.citycare.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,15 +10,11 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "cpf", "email" }))
 public class Usuario {
-	private List<Usuario> user;
-	
-	public Usuario(List<Usuario> user){
-		this.user = user;
-	}
 	
 	public Usuario(){
 		super();
 	}
+	
 	@Id
 	@GeneratedValue
 	private Long id;

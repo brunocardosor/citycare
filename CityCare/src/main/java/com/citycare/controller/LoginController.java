@@ -23,12 +23,24 @@ public class LoginController {
 	
 	@RequestMapping(value="efetuaLogin")
 	public ModelAndView login(String email, String senha){
+		//busca no banco através do email e senha inseridos na página
 		List<Usuario> usuario = lr.findByEmailAndSenha(email, senha);
-		Usuario usr = new Usuario(usuario);
-		if(usuario.size() == 1){
-		ModelAndView mv = new ModelAndView("/denuncia/Cadastro");
-		return mv;
+		//testa valores da página com as do banco
+		if(usuario.get(0).getEmail().equals(email) && usuario.get(0).getSenha().equals(senha) ){
+			//verifica se usuário está ativo
+			if(usuario.get(0).isStatus() == true){
+				ModelAndView mv = new ModelAndView("/denuncia/Cadastro");
+				return mv;
+			
+			} else {
+				//tela com aviso de conta desativada
+				ModelAndView mv = new ModelAndView("/usuario/login-screen");
+				mv.addObject("mensagem","Conta Desativada");
+				return mv;
+			}
+			
 		} else {
+			//tela com aviso de 
 			ModelAndView mv = new ModelAndView("/usuario/login-screen");
 			mv.addObject("mensagem","Senha ou Login incorretos");
 			return mv;
