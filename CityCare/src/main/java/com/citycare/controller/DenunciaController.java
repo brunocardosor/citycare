@@ -11,16 +11,13 @@ import com.citycare.model.Categoria;
 import com.citycare.model.CategoriaRepository;
 import com.citycare.model.Denuncia;
 import com.citycare.model.DenunciaRepository;
-import com.citycare.model.Usuario;
 
 @Controller
 public class DenunciaController {
-	@Autowired
+	@Autowired //injeção de dependencia 
 	private CategoriaRepository cr;
 	@Autowired
 	private DenunciaRepository dr;
-	Usuario usr = new Usuario();
-	Denuncia dn = new Denuncia();
 	
 	
 	@RequestMapping(value="/D_Cadastro")
@@ -33,7 +30,6 @@ public class DenunciaController {
 	
 	@RequestMapping(value="adicionaDenuncia")
 	public ModelAndView adicionaDenuncia(Denuncia denuncia){
-		dn.setUsuario(usr);
 		dr.save(denuncia);
 		return formDenunciaCadastro();
 	}
