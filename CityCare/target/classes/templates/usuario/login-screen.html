@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>CityCare</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+
+</head>
+<body>
+<div>
+<div id="login-position" class="form-control">
+<h2 id="b-vindo">CityCare</h2>
+	<div id="alert-login" class="alert alert-danger" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+		<span th:text="${mensagem}">  </span>		
+	</div>
+	<form action="efetuaLogin" method="post">
+		<div class="form-group">
+			<input type="email" class="form-control" placeholder="Email" name="email"/><br/>
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-control" placeholder="senhar" name="senha"/><br/>	
+		</div>
+		<div id="bt-entrar">
+			<input type="submit" value="Entrar" class="btn btn-primary"/> 
+		</div>
+	</form>
+	</div>
+		<div id="cdst">
+			<button class="btn btn-warning"> Cadastra-se </button>
+		</div>
+</div>
+</body>
+</html>

@@ -10,10 +10,8 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "cpf", "email" }))
 public class Usuario {
+
 	
-	public Usuario(){
-		super();
-	}
 	
 	@Id
 	@GeneratedValue

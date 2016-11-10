@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Cadastro de Denuncia</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+	<div class="">
+		<form action="adicionaDenuncia" method="post">
+			Descrição: <br/>
+			<input type="text" name="descricao"/><br/>
+			Localização: <br/>
+			<input type="text" name="localizacao"/><br/>
+			Categoria: <br/>
+			<select name="categoria">
+				<option >Selecione a Categoria</option>
+				<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
+			</select>
+			<input type="submit" value="Enviar Denuncia"/>	
+		</form>
+	</div>
+</body>
+</html>

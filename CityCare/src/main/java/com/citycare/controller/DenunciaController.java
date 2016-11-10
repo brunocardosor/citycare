@@ -11,6 +11,7 @@ import com.citycare.model.Categoria;
 import com.citycare.model.CategoriaRepository;
 import com.citycare.model.Denuncia;
 import com.citycare.model.DenunciaRepository;
+import com.citycare.model.UsuarioSingleton;
 
 @Controller
 public class DenunciaController {
@@ -18,6 +19,7 @@ public class DenunciaController {
 	private CategoriaRepository cr;
 	@Autowired
 	private DenunciaRepository dr;
+	
 	
 	
 	@RequestMapping(value="/D_Cadastro")
@@ -30,7 +32,23 @@ public class DenunciaController {
 	
 	@RequestMapping(value="adicionaDenuncia")
 	public ModelAndView adicionaDenuncia(Denuncia denuncia){
+		denuncia.setUsuario(UsuarioSingleton.getInstance());
 		dr.save(denuncia);
 		return formDenunciaCadastro();
+	}
+	
+	@RequestMapping(value="deletaDenuncia")
+	public ModelAndView deletaDenuncia(Denuncia denuncia){
+		dr.delete(denuncia);
+		return null;
+		
+	}
+	
+	@RequestMapping(value="pesquisa")
+	public ModelAndView pesquisar(String categoria){
+		ModelAndView mv = new ModelAndView();
+		List<Denuncia> denuncia = dr.findByCategoriaStartingWithOrderByIdDesc(categoria);
+		mv.addObject("resultadoPesquisa", denuncia);
+		return null;
 	}
 }

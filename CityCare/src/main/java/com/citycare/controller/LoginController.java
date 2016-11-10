@@ -7,19 +7,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.citycare.model.Categoria;
+import com.citycare.model.CategoriaRepository;
 import com.citycare.model.LoginRepository;
 import com.citycare.model.Usuario;
+import com.citycare.model.UsuarioSingleton;
 
 @Controller
 public class LoginController {
 	
 	@Autowired
 	private LoginRepository lr;
+	@Autowired
+	private CategoriaRepository cr;
 	
 	@RequestMapping(value="login")
 	public String loginScreen(){
 		return "/usuario/login-screen";
 	}
+	
 	
 	@RequestMapping(value="efetuaLogin")
 	public ModelAndView login(String email, String senha){
@@ -29,7 +35,11 @@ public class LoginController {
 		if(usuario.get(0).getEmail().equals(email) && usuario.get(0).getSenha().equals(senha) ){
 			//verifica se usuário está ativo
 			if(usuario.get(0).isStatus() == true){
+				Usuario user = usuario.get(0);
+				UsuarioSingleton.setInstance(user);
+				List<Categoria> categoria = cr.findAll();
 				ModelAndView mv = new ModelAndView("/denuncia/Cadastro");
+				mv.addObject("todosValoresCategoria",categoria);
 				return mv;
 			
 			} else {
