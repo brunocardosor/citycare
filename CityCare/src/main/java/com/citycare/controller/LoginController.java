@@ -38,7 +38,7 @@ public class LoginController {
 				Usuario user = usuario.get(0);
 				UsuarioSingleton.setInstance(user);
 				List<Categoria> categoria = cr.findAll();
-				ModelAndView mv = new ModelAndView("/denuncia/Cadastro");
+				ModelAndView mv = new ModelAndView("/denuncia/feed-denuncias");
 				mv.addObject("todosValoresCategoria",categoria);
 				return mv;
 			
