@@ -50,7 +50,7 @@ public class LoginController {
 			}
 			
 		} else {
-			//tela com aviso de 
+			//tela com aviso de senha incorreta
 			ModelAndView mv = new ModelAndView("/usuario/login-screen");
 			mv.addObject("mensagem","Senha ou Login incorretos");
 			return mv;
