@@ -30,7 +30,7 @@ public class DenunciaController {
 		return mv;
 	}
 	
-	@RequestMapping(value="adicion**aDenuncia")
+	@RequestMapping(value="adicionaDenuncia")
 	public ModelAndView adicionaDenuncia(Denuncia denuncia){
 		denuncia.setUsuario(UsuarioSingleton.getInstance());
 		dr.save(denuncia);
