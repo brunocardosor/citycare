@@ -32,7 +32,7 @@ public class LoginController {
 		//busca no banco através do email e senha inseridos na página
 		List<Usuario> usuario = lr.findByEmailAndSenha(email, senha);
 		//testa valores da página com as do banco
-		if(usuario.get(0).getEmail().equals(email) && usuario.get(0).getSenha().equals(senha) ){
+		if(usuario.get(0).getEmail().equals(email) && usuario.get(0).getSenha().equals(senha)){
 			//verifica se usuário está ativo
 			if(usuario.get(0).isStatus() == true){
 				Usuario user = usuario.get(0);
@@ -50,7 +50,7 @@ public class LoginController {
 			}
 			
 		} else {
-			//tela com aviso de senha incorreta
+			//tela com aviso de 
 			ModelAndView mv = new ModelAndView("/usuario/login-screen");
 			mv.addObject("mensagem","Senha ou Login incorretos");
 			return mv;

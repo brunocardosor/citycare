@@ -18,13 +18,13 @@ public class UsuarioController {
 	public String formUsuarioCadastro(){
 		return "/usuario/Cadastro";
 	}
-	//Adiciona usuario
+	
 	@RequestMapping(value="adicionaUsuario")
 	public String adicionaUsuario(Usuario usuario){
 		ur.save(usuario);
 		return formUsuarioCadastro();
 	}
-	//Atualização dos dados
+	
 	@RequestMapping(value="U_atualiza")
 	public ModelAndView formUsuarioAtualiza(){
 		ModelAndView mv = new ModelAndView("/usuario/AtualizaDados");
