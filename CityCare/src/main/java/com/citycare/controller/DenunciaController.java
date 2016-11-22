@@ -22,10 +22,10 @@ public class DenunciaController {
 	
 	
 	
-	@RequestMapping(value="/D_Cadastro")
+	@RequestMapping(value="/feed")
 	public ModelAndView formDenunciaCadastro(){
 		List<Categoria> categoria = cr.findAll();
-		ModelAndView mv = new ModelAndView("/denuncia/Cadastro");
+		ModelAndView mv = new ModelAndView("/denuncia/feed-denuncias");
 		mv.addObject("todosValoresCategoria",categoria);
 		return mv;
 	}

@@ -34,3 +34,15 @@
 	width:324px;
 	height:35px;
 }
+
+input, div{
+	margin:5px;
+}
+
+.div-denuncia{
+	style=" border:1px solid #ccc; 
+	margin-top:80px ;
+	background-color:white; 
+	border-radius:6px; 
+	box-shadow: 0px 0px 12px -1px;"
+}
