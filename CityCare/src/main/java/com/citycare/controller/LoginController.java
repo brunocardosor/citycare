@@ -7,10 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.citycare.model.Categoria;
-import com.citycare.model.CategoriaRepository;
-import com.citycare.model.Denuncia;
-import com.citycare.model.DenunciaRepository;
 import com.citycare.model.LoginRepository;
 import com.citycare.model.Usuario;
 import com.citycare.model.UsuarioSingleton;
@@ -21,9 +17,7 @@ public class LoginController {
 	@Autowired
 	private LoginRepository lr;
 	@Autowired
-	private CategoriaRepository cr;
-	@Autowired
-	private DenunciaRepository dr;
+	private DenunciaController dc;
 	
 	@RequestMapping(value="login")
 	public String loginScreen(){
@@ -42,12 +36,9 @@ public class LoginController {
 				if(usuario.get(0).isStatus() == true){
 					Usuario user = usuario.get(0);
 					UsuarioSingleton.setInstance(user);
-					List<Categoria> categoria = cr.findAll();
-					List<Denuncia> denuncia = dr.findAll();
-					ModelAndView mv = new ModelAndView("/denuncia/feed-denuncias");
-					mv.addObject("todosValoresCategoria",categoria);
-					mv.addObject("todosValoresDenuncia", denuncia);
-					return mv;
+					ModelAndView mv = new ModelAndView();
+					mv.addObject("NomeUsuario", user);
+					return dc.feedDenuncias();
 			
 				} else {
 				//tela com aviso de conta desativada

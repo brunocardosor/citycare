@@ -54,4 +54,5 @@ public class Denuncia {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	
 }

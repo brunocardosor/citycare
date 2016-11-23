@@ -29,4 +29,8 @@ public class Categoria {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-}
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.descricao;
+		}
+	}

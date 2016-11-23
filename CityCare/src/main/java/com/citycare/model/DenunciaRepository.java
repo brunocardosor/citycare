@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DenunciaRepository extends JpaRepository<Denuncia, Long>{
 	List<Denuncia> findByCategoriaStartingWithOrderByIdDesc(String categoria);
+	List<Denuncia> findAllByOrderByIdDesc();
 }

@@ -78,5 +78,8 @@ public class Usuario {
 		this.status = status;
 	}
 	
-
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.nome; 
+		}
 }
