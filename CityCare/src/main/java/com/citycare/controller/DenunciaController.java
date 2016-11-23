@@ -45,11 +45,11 @@ public class DenunciaController {
 		
 	}
 	
-	@RequestMapping(value="pesquisa")
+	/*@RequestMapping(value="pesquisa")
 	public ModelAndView pesquisar(String categoria){
 		ModelAndView mv = new ModelAndView();
 		List<Denuncia> denuncia = dr.findByCategoriaStartingWithOrderByIdDesc(categoria);
 		mv.addObject("resultadoPesquisa", denuncia);
 		return null;
-	}
+	}*/
 }

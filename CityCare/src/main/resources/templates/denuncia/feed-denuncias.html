@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
-<title>CityCare</title>
+<title>CityCare - Home</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
@@ -11,20 +11,21 @@
 
 <nav class="navbar col-md-12 navbar-default navbar-fixed-top">
   <div class="container-fluid">
-  <div class="div-card col-md-3" style="margin-top:0.5%; margin-left:8%;">
+  <div class="div-card col-md-3" style="margin-top:0.5%; margin-left:8%; position:absolute;">
 		<div>
 			<div class="div-name-position"> 
 				<a href="/profile"> 
-				<span class="card-nome">Bruno Cardoso</span>
+				<span th:text="${NomeUsuario}" class="card-nome"> </span>
 				</a>
 			</div> 
 			<div>
 				<div>
 					<ul class="card-info">
-						<li class="div-card-info div-card-info-left">
-							<span><strong>Denuncias</strong></span>
+						<li class="div-card-info">
+							<a href="/profile"><span><strong>Denuncias</strong></span>
 							<p></p>
-							<span><strong> 50 </strong></span>
+							<span><strong> </strong></span>
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -32,10 +33,10 @@
 		</div>
 	</div>
   	<div>
-    <ul style="margin-top:0.3%; margin-left:11%;" class="nav nav-tabs col-md-2">
-  		<li role="presentation" class="active"><a href="/feed">Home</a></li>
+    <ul style="margin-top:0.3%; margin-left:34%;" class="nav nav-tabs col-md-2">
+  		<li role="presentation" class="active"><a style="color:#337ab7" href="/feed">Home</a></li>
   		
-  		<li role="presentation"><a href="/profile">Perfil</a></li>	
+  		<li role="presentation"><a style="color:#337ab7" href="/profile">Perfil</a></li>	
 	</ul>	
   </div>
   <div>
@@ -54,8 +55,7 @@
   				</div>
   			</form>
   			<button class="btn btn-warning" style="float:right; margin-top:0.5%;">
-  				<span> Denuncia </span>
-  				<span> <i class="glyphicon glyphicon-pencil"></i></span>
+  				<span> Denuncia &ensp; <i class="glyphicon glyphicon-pencil"></i> </span>
   			</button>
   			</div> 
  		</div>
@@ -63,7 +63,7 @@
 	</nav>
 	
 	<div class="col-md-offset-4 col-md-4">
-		<div class="div-denuncia" style="height:16.5em">
+		<div class="div-denuncia">
 		<form action="adicionaDenuncia" method="post">
 			<div class="col-md-6">
 			<input name="localizacao" placeholder="Localização" class="form-control input-space"/>
@@ -89,7 +89,7 @@
 		<p></p>
 		</div>
 		<div style="margin-top:2%; text-align: right;" class="col-md-6">
-			<a>
+			<a href="#" class="categoriaDenuncia">
 			<strong><span th:text="${valorDenuncia.categoria}"></span></strong>
 			</a>
 		<p></p>
@@ -102,7 +102,7 @@
 		</div>
 			
 		<div class="col-md-12">
-			<span th:text="${valorDenuncia.localizacao}"></span>
+			<span style="color:gray" th:text="${valorDenuncia.localizacao}"></span>
 			<p></p>
 		</div>
 		

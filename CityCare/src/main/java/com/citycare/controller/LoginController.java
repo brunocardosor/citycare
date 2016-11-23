@@ -36,8 +36,9 @@ public class LoginController {
 				if(usuario.get(0).isStatus() == true){
 					Usuario user = usuario.get(0);
 					UsuarioSingleton.setInstance(user);
+					String nome = user.getNome();
 					ModelAndView mv = new ModelAndView();
-					mv.addObject("NomeUsuario", user);
+					mv.addObject("NomeUsuario", nome);
 					return dc.feedDenuncias();
 			
 				} else {
