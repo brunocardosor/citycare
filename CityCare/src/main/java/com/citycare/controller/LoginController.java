@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.citycare.model.Categoria;
 import com.citycare.model.CategoriaRepository;
+import com.citycare.model.Denuncia;
+import com.citycare.model.DenunciaRepository;
 import com.citycare.model.LoginRepository;
 import com.citycare.model.Usuario;
 import com.citycare.model.UsuarioSingleton;
@@ -20,6 +22,8 @@ public class LoginController {
 	private LoginRepository lr;
 	@Autowired
 	private CategoriaRepository cr;
+	@Autowired
+	private DenunciaRepository dr;
 	
 	@RequestMapping(value="login")
 	public String loginScreen(){
@@ -32,24 +36,26 @@ public class LoginController {
 		//busca no banco através do email e senha inseridos na página
 		List<Usuario> usuario = lr.findByEmailAndSenha(email, senha);
 		//testa valores da página com as do banco
-		if(usuario.get(0).getEmail().equals(email) && usuario.get(0).getSenha().equals(senha)){
+
+			if(usuario.size() > 0 && usuario.get(0).getEmail().equals(email) && usuario.get(0).getSenha().equals(senha)){
 			//verifica se usuário está ativo
-			if(usuario.get(0).isStatus() == true){
-				Usuario user = usuario.get(0);
-				UsuarioSingleton.setInstance(user);
-				List<Categoria> categoria = cr.findAll();
-				ModelAndView mv = new ModelAndView("/denuncia/feed-denuncias");
-				mv.addObject("todosValoresCategoria",categoria);
-				return mv;
+				if(usuario.get(0).isStatus() == true){
+					Usuario user = usuario.get(0);
+					UsuarioSingleton.setInstance(user);
+					List<Categoria> categoria = cr.findAll();
+					List<Denuncia> denuncia = dr.findAll();
+					ModelAndView mv = new ModelAndView("/denuncia/feed-denuncias");
+					mv.addObject("todosValoresCategoria",categoria);
+					mv.addObject("todosValoresDenuncia", denuncia);
+					return mv;
 			
-			} else {
+				} else {
 				//tela com aviso de conta desativada
-				ModelAndView mv = new ModelAndView("/usuario/login-screen");
-				mv.addObject("mensagem","Conta Desativada");
-				return mv;
-			}
-			
-		} else {
+					ModelAndView mv = new ModelAndView("/usuario/login-screen");
+					mv.addObject("mensagem","Conta Desativada");
+					return mv;
+				}
+			} else {
 			//tela com aviso de 
 			ModelAndView mv = new ModelAndView("/usuario/login-screen");
 			mv.addObject("mensagem","Senha ou Login incorretos");

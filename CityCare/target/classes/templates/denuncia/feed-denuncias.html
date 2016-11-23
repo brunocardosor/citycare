@@ -4,22 +4,23 @@
 <meta charset="UTF-8"/>
 <title>CityCare</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
 <div>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
   	<div>
-    <ul class="nav nav-tabs col-md-2 col-md-offset-3">
-  		<li role="presentation" class="active"><a href="#">Home</a></li>
+    <ul style="margin-top:0.3%" class="nav nav-tabs col-md-2 col-md-offset-3">
+  		<li role="presentation" class="active"><a href="/feed-denuncias">Home</a></li>
   		
-  		<li role="presentation"><a href="#">Perfil</a></li>	
+  		<li role="presentation"><a href="/profile">Perfil</a></li>	
 	</ul>	
   </div>
   <div>
-  	<form method="GET" class="nav-form">
+  	<form method="GET" class="nav-form col-md-3" style=" margin-top: 0.5%; margin-left: 18%;">
   		<div class="form-group">
-  		  	<div class="col-sm-2 col-md-offset-3">
+  		  	<div>
   				<div class="input-group">
   					<input class="form-control" placeholder="Categoria" />
   						<span class="input-group-btn">
@@ -31,7 +32,7 @@
   					</div>
   				</div>
   			</form>
-  			<button class="btn btn-warning" style="margin-left: 15px; float:right;">
+  			<button class="btn btn-warning" style="float:right; margin-top:0.5%;">
   				<span> Denuncia </span>
   				<span> <i class="glyphicon glyphicon-pencil"></i></span>
   			</button>
@@ -40,27 +41,55 @@
 		
 	</nav>
 	
-	<div class="col-md-offset-4 col-md-4 div-denuncia">
+	<div class="col-md-offset-4 col-md-4">
+		<div class="div-denuncia" style="height:15.5em">
 		<form action="adicionaDenuncia" method="post">
-			<div class="col-md-7">
-			<input type="text" name="localizacao" placeholder="Localização" class="form-control"/>
+			<div class="col-md-6">
+			<input name="localizacao" placeholder="Localização" class="form-control input-space"/>
 			</div>
-			<div class="col-md-4">
-				<select name="categoria" class="form-control">
+			<div class="col-md-6">
+				<select name="categoria" class="form-control input-space">
 					<option>Categoria</option>
 					<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
 				</select>
 				
 			</div>
-			<div>
-				<input style="height:70px;" type="text" name="descricao" placeholder="Descrição" class="form-control"/>
+			<div class="col-md-12">
+				<textarea rows="4" maxlength="255" name="descricao" placeholder="Descrição" class="form-control input-space"></textarea>
 			</div>
 			<div>
-				<input style="float:right; margin:5px;" type="submit" class="btn btn-primary" value="Enviar"/>
+				<input style="float:right; margin-right:3%; margin-top:1.5%" type="submit" class="btn btn-primary" value="Enviar"/>
 			</div>
 		</form>
+		</div>
+		<div	th:each="valorDenuncia : ${todosValoresDenuncia}" style="margin-top:3%" class="div-feed-posicao div-feed container col-md-12">
+		<div class="col-md-6" style="margin-top:2%">
+		<a href="/profile" >
+			<span th:text="${}"><strong></strong></span>
+		</a>
+		<p></p>
+		</div>
+		<div style="margin-top:2%; text-align: right;" class="col-md-6">
+		<a href="#">
+			<span th:text="${}"><strong></strong></span>
+		</a>
+		<p></p>
+		</div>
+		
+		<div class="col-md-12">
+		<p>	
+			<span th:text="${valorDenuncia.descricao}"></span>
+		</p>
+		</div>
+			
+		<div class="col-md-12">
+			<span th:text="${valorDenuncia.localizacao}"></span>
+			<p></p>
+		</div>
+		
 	</div>
-</div>
+	</div>
+	</div>
 <script type="text/javascript" src="/js/boostrap.min.js"></script>
 <script type="text/javascrip" src="/js/jquery-3.1.1.min.map.js"></script>
 

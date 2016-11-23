@@ -35,14 +35,42 @@
 	height:35px;
 }
 
-input, div{
-	margin:5px;
-}
-
 .div-denuncia{
-	style=" border:1px solid #ccc; 
+	border:1px solid #ccc; 
 	margin-top:80px ;
 	background-color:white; 
 	border-radius:6px; 
-	box-shadow: 0px 0px 12px -1px;"
+	box-shadow: 0px 0px 12px -1px;
+	heidth:15.5em;
+}
+.input-space{
+	margin-top:3%;
+}
+
+.centralizado {
+    margin: 0 auto;
+    float: none;
+}
+
+.div-feed{
+	border:1px solid #ccc;
+	background-color:white;  	
+	box-shadow: 0px 0px 12px -1px;
+}
+
+textarea{
+	resize:none;
+}
+
+.local-input{
+	width:40%;
+}
+.cat-input{
+	width:40%;
+}
+a{
+	text-decoration:none;
+}
+body{
+	font-size:13px;
 }
