@@ -1,0 +1,149 @@
+@CHARSET "UTF-8";
+
+
+#login-position{
+	
+	width:350px;
+	height:330px;
+    position:absolute; 
+	top:50%; 
+    margin-top:-220px;
+    left:50%;
+    margin-left:-14%; 
+    box-shadow: 0px 0px 10px 3px gray; 
+}
+
+#cdst{
+	width:103px;
+	height:35px;
+	position:absolute;
+	margin-left:45%;
+	margin-top:35%;
+}
+	
+#bt-entrar{
+	width:65px;
+	height:35px;
+	margin-left: 40%;
+	margin-top:5%;
+}
+#b-vindo{
+	width:324px;
+	height:50px;
+	margin-left:30%;
+}
+#alert-login{
+	width:324px;
+	height:35px;
+}
+.div-denuncia{
+	border:1px solid #ccc; 
+	margin-top:80px ;
+	background-color:white; 
+	border-radius:6px; 
+	box-shadow: 0px 0px 12px -1px;
+	height:15.5em;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+.div-denuncia{
+	border:1px solid #ccc; 
+	margin-top:80px ;
+	background-color:white; 
+	border-radius:6px; 
+	box-shadow: 0px 0px 12px -1px;
+	height:14.5em;
+	}
+}
+.input-space{
+	margin-top:3%;
+}
+
+.centralizado {
+    margin: 0 auto;
+    float: none;
+}
+
+.div-feed{
+	border:1px solid #ccc;
+	background-color:white;  	
+	box-shadow: 0px 0px 12px -1px;
+}
+
+textarea{
+	resize:none;
+}
+
+.local-input{
+	width:40%;
+}
+.cat-input{
+	width:40%;
+}
+
+.div-card{
+	border-radius: 10px;
+	width: 22%;
+	height: 237%;
+	background-color: white;
+	border: 1px solid #ccc;
+	box-shadow: 0px 1px 10px -1px;
+}
+.div-name-position{
+	margin-top: 9%;
+}
+.div-card-info{
+	background-color: #e7e7e7;
+	width: 131%;
+	height: 3.5em; 	
+	border-radius: 0px 0px 10px 10px;
+	margin-left: -24.3%;
+}
+a{	
+	font-family: Arial;
+	text-decoration: none;
+	color: orange;
+}
+a:hover{
+	font-family: Arial;
+	text-decoration: none;
+	color: orange;
+}
+ul{
+	list-style-type: none;
+	text-align: center;
+	}
+.card-nome{
+	color: black;
+	text-align: center;
+	font-size: 29.41px;
+}
+.card-info{
+	color:orange;
+	font-size: 18px;
+	font-family: Arial;
+}
+.categoriaDenuncia{
+	font-family:Arial;
+	text-decoration: none;
+	color: #337ab7;
+}
+.categoriaDenuncia:hover{
+	font-family:Arial;
+	text-decoration: none;
+	color: #337ab7;
+}
+
+.btn-denuncia{
+	margin-right:7%;
+}
+
+.btn-edit{
+	border-color: white;
+	font-size:10px;
+}
+
+.btn-edit:hover{
+    color: #333;
+    background-color: #fff;
+    border-color:#fff;
+}

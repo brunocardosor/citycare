@@ -63,7 +63,7 @@ public class DenunciaController {
 	
 	@RequestMapping(value="pesquisar")
 	public ModelAndView pesquisar(String descricao){
-		List<Categoria> categoria = cr.findByDescricao(descricao);
+		List<Categoria> categoria = cr.findByDescricaoContaining(descricao);
 		Categoria categoriaPesq = new Categoria();
 		categoriaPesq.setDescricao(categoria.get(0).getDescricao());
 		categoriaPesq.setId(categoria.get(0).getId());
