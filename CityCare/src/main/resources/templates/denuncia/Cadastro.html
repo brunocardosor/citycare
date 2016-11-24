@@ -4,14 +4,18 @@
 <meta charset="UTF-8"/>
 <title>Cadastro de Denuncia</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
+<div id="tela-denuncia">
 	<div class="">
 		<form action="adicionaDenuncia" method="post">
 			Descrição: <br/>
-			<input type="text" name="descricao"/><br/>
+			<div class="form-group">
+	<input type="text" class="form-control" placeholder="Descrição" name="Descrição"/>
+		</div>
 			Localização: <br/>
-			<input type="text" name="localizacao"/><br/>
+			<input type="text" class="form-control" placeholder="Localização" name="Localização"/>
 			Categoria: <br/>
 			<select name="categoria">
 				<option >Selecione a Categoria</option>
@@ -19,6 +23,7 @@
 			</select>
 			<input type="submit" value="Enviar Denuncia"/>	
 		</form>
+		</div>
 	</div>
 </body>
 </html>

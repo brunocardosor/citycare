@@ -58,16 +58,50 @@
 }
 
 #descrição{
-	width:130px;
-	height:39px;
+	width:280px;
+	height:70px;
 	position:absolute;
-	margin-left:45%;
+	margin-left:7%;
 	margin-top:0%;
 }
 
 #cadastre-se{
 	width:324px;
 	height:50px;
-	margin-left:45%;
+	margin-left:20%;
 	margin-top:15%;
 }
+
+#cdt-descriaõ{
+	width:350px;
+	height:330px;
+    position:absolute; 
+	top:50%; 
+    margin-top:-220px;
+    left:50%;
+    margin-left:-14%; 
+    box-shadow: 0px 0px 10px 3px gray; 
+	
+}
+
+#bt-categoria{
+	width:60px;
+	height:70px;
+	margin-left:53%;
+	margin-top:35%;
+	
+}
+
+#tela-denuncia{
+	width:350px;
+	height:330px;
+    position:absolute; 
+	top:50%; 
+    margin-top:-220px;
+    left:50%;
+    margin-left:-14%; 
+    box-shadow: 0px 0px 10px 3px gray; 
+	
+}
+
+
