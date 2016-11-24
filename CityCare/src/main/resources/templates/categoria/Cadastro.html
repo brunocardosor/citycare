@@ -4,13 +4,18 @@
 <meta charset="UTF-8"/>
 <title>Cadastro de Categoria</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
+<h2 id="cadastre-se">Descrição</h2>
+<div id="descrição">
 	<form action="adicionaCategoria" method="post">
-	Descricao:<br/>
-	<input name="descricao" type="text"/><br/>
-	<input type="submit" value="Salvar Categoria"/>
+
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Descrição" name="Descrição"/>
+	</div>
+	<input class="btn btn-primary" type="submit" value="Salvar Categoria"/>
 	</form>
-	
+	</div>
 </body>
 </html>

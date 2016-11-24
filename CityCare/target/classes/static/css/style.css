@@ -56,3 +56,18 @@
 	
 	
 }
+
+#descrição{
+	width:130px;
+	height:39px;
+	position:absolute;
+	margin-left:45%;
+	margin-top:0%;
+}
+
+#cadastre-se{
+	width:324px;
+	height:50px;
+	margin-left:45%;
+	margin-top:15%;
+}
