@@ -41,8 +41,8 @@ public class DenunciaController {
 		usuario = UsuarioSingleton.getInstance();
 		List<Denuncia> denuncia = dr.findByUsuarioOrderByIdDesc(usuario);
 		ModelAndView mv = new ModelAndView("/usuario/profile");
-		mv.addObject("qntdDenuncias", denuncia.size());
 		mv.addObject("nomeUsuario", usuario.getNome());
+		mv.addObject("qntdDenuncias", denuncia.size());
 		mv.addObject("todosValoresDenuncia", denuncia);
 		return mv;
 	}
