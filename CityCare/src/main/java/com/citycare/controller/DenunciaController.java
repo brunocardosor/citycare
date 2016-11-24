@@ -11,6 +11,7 @@ import com.citycare.model.Categoria;
 import com.citycare.model.CategoriaRepository;
 import com.citycare.model.Denuncia;
 import com.citycare.model.DenunciaRepository;
+import com.citycare.model.Usuario;
 import com.citycare.model.UsuarioSingleton;
 
 @Controller
@@ -23,12 +24,24 @@ public class DenunciaController {
 	
 	@RequestMapping(value="feed")
 	public ModelAndView feedDenuncias(){
+		Usuario usuario = UsuarioSingleton.getInstance();
 		List<Categoria> categoria = cr.findAll();
 		List<Denuncia> denuncia = dr.findAllByOrderByIdDesc();
 		ModelAndView mv = new ModelAndView("/denuncia/feed-denuncias");
+		mv.addObject("nomeUsuario", usuario.getNome());
 		mv.addObject("todosValoresCategoria",categoria);
 		mv.addObject("todosValoresDenuncia", denuncia);
 		return mv;	
+	}
+		
+		@RequestMapping(value="profile")
+		public ModelAndView profileUsuario(Usuario usuario){
+		usuario = UsuarioSingleton.getInstance();
+		List<Denuncia> denuncia = dr.findByUsuarioOrderByIdDesc(usuario);
+		ModelAndView mv = new ModelAndView("/usuario/profile");
+		mv.addObject("nomeUsuario", usuario.getNome());
+		mv.addObject("todosValoresDenuncia", denuncia);
+		return mv;
 	}
 	
 	@RequestMapping(value="adicionaDenuncia")
