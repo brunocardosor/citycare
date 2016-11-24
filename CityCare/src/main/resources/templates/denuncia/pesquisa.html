@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
-<title>CityCare - Home</title>
+<title>CityCare</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
@@ -14,8 +14,8 @@
   <div class="div-card col-md-3" style="margin-top:0.5%; margin-left:8%; position:absolute;">
 		<div>
 			<div class="div-name-position"> 
-				<a href="/profile">
-					<span th:text="${nomeUsuario}" class="card-nome" ></span>
+				<a href="/profile"> 
+					<span th:text="${nomeUsuario}" class="card-nome"></span>
 				</a>
 			</div> 
 			<div>
@@ -34,13 +34,13 @@
 	</div>
   	<div>
     <ul style="margin-top:0.3%; margin-left:34%;" class="nav nav-tabs col-md-2">
-  		<li role="presentation" class="active"><a style="color:#337ab7" href="/feed">Home</a></li>
+  		<li role="presentation"><a href="/feed" style="color:#337ab7">Home</a></li>
   		
-  		<li role="presentation"><a style="color:#337ab7" href="/profile">Perfil</a></li>	
+  		<li class="active" role="presentation"><a style="color:#337ab7" href="/profile">Perfil</a></li>	
 	</ul>	
   </div>
   <div>
-  	  <form action="pesquisar" method="GET" class="nav-form col-md-3" style=" margin-top: 0.5%; margin-left: 4%;">
+  	<form action="pesquisar" method="GET" class="nav-form col-md-3" style=" margin-top: 0.5%; margin-left: 4%;">
   		<div class="form-group">
   		  	<div>
   				<div class="input-group">
@@ -62,33 +62,15 @@
 		
 	</nav>
 	
-	<div class="col-md-offset-4 col-md-4">
-		<div class="div-denuncia">
-		<form action="adicionaDenuncia" method="post">
-			<div class="col-md-6">
-			<input name="localizacao" placeholder="Localização" class="form-control input-space"/>
-			</div>
-			<div class="col-md-6">
-				<select name="categoria" class="form-control input-space">
-					<option>Categoria</option>
-					<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
-				</select>
-				
-			</div>
-			<div class="col-md-12">
-				<textarea rows="4" maxlength="255" name="descricao" placeholder="Descrição" class="form-control input-space"></textarea>
-			</div>
-			<div>
-				<input style="float:right; margin-right:3%; margin-top:2%" type="submit" class="btn btn-primary" value="Enviar"/>
-			</div>
-		</form>
-		</div>
-		<div	th:each="valorDenuncia : ${todosValoresDenuncia}" style="margin-top:3%" class="div-feed-posicao div-feed container col-md-12">
-		<div class="col-md-6" style="margin-top:2%">
+	<div class="col-md-offset-4 col-md-4" style="margin-top:4%;">
+
+		<div	th:each="valorDenuncia : ${resultadoPesquisa}" style="margin-top:3%" class="div-feed-posicao div-feed container col-md-12">
+		<div>
+		<div class="col-md-6">
 			<strong><span th:text="${valorDenuncia.usuario}"><strong></strong></span></strong>
 		<p></p>
 		</div>
-		<div style="margin-top:2%; text-align: right;" class="col-md-6">
+		<div style="text-align: right;" class="col-md-6">
 			<a href="#" class="categoriaDenuncia">
 			<strong><span th:text="${valorDenuncia.categoria}"></span></strong>
 			</a>
@@ -106,6 +88,7 @@
 			<p></p>
 		</div>
 		
+	</div>
 	</div>
 	</div>
 	</div>

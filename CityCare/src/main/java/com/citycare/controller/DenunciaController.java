@@ -61,11 +61,19 @@ public class DenunciaController {
 		
 	}
 	
-	/*@RequestMapping(value="pesquisa")
-	public ModelAndView pesquisar(String categoria){
-		ModelAndView mv = new ModelAndView();
-		List<Denuncia> denuncia = dr.findByCategoriaStartingWithOrderByIdDesc(categoria);
+	@RequestMapping(value="pesquisa")
+	public ModelAndView pesquisar(String descricao){
+		List<Categoria> categoria = cr.findByDescricao(descricao);
+		Categoria categoriaPesq = new Categoria();
+		categoriaPesq.setDescricao(categoria.get(0).getDescricao());
+		categoriaPesq.setId(categoria.get(0).getId());
+		Usuario usuario = UsuarioSingleton.getInstance();
+		List<Denuncia> denuncia = dr.findByCategoriaOrderByIdDesc(categoriaPesq);
+		List<Denuncia> qntdDenuncia = dr.findByUsuarioOrderByIdDesc(usuario);
+		ModelAndView mv = new ModelAndView("/denuncia/pesquisa");
+		mv.addObject("nomeUsuario", usuario.getNome());
+		mv.addObject("qntdDenuncias", qntdDenuncia.size());
 		mv.addObject("resultadoPesquisa", denuncia);
-		return null;
-	}*/
+		return mv;
+	}
 }
