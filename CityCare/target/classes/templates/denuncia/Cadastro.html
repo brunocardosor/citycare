@@ -8,19 +8,19 @@
 </head>
 <body>
 <div id="tela-denuncia">
-	<div class="">
-		<form action="adicionaDenuncia" method="post">
-			Descrição: <br/>
-			<div class="form-group">
-	<input type="text" class="form-control" placeholder="Descrição" name="Descrição"/>
-		</div>
+	<div id="form-denun" class="">
+	<h2 id="Cadastro-Denuncia" >Cadastre sua Denuncia</h2>
+		<form id="cdt-denuncia" action="adicionaDenuncia" method="post">		
+			Descrição: <br/>		
+	<input type="text" class="form-control" placeholder="Descrição" name="descrição"/><br/>	
 			Localização: <br/>
-			<input type="text" class="form-control" placeholder="Localização" name="Localização"/>
-			Categoria: <br/>
+			<input type="text" class="form-control" placeholder="Localização" name="localização"/><br/>
+			
+			 
 			<select name="categoria">
 				<option >Selecione a Categoria</option>
 				<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
-			</select>
+			</select><br/><br/><br/><br/>
 			<input type="submit" value="Enviar Denuncia"/>	
 		</form>
 		</div>

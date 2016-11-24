@@ -17,7 +17,7 @@
 	height:35px;
 	position:absolute;
 	margin-left:31.5%;
-	margin-top:7%;
+	margin-top:15%;
 	}
 #bt-entrar{
 	width:65px;
@@ -69,7 +69,7 @@
 	width:324px;
 	height:50px;
 	margin-left:20%;
-	margin-top:15%;
+	margin-top:20%;
 }
 
 #cdt-descriaõ{
@@ -93,14 +93,37 @@
 }
 
 #tela-denuncia{
-	width:350px;
-	height:330px;
+	width:400px;
+	height:390px;
     position:absolute; 
-	top:50%; 
+	top:40%; 
     margin-top:-220px;
     left:50%;
     margin-left:-14%; 
     box-shadow: 0px 0px 10px 3px gray; 
+	
+}
+
+
+#form-denun{
+	width:370px;
+	height:50px;
+	
+	
+}
+
+#cdt-denuncia{
+	width:370px;
+	height:70px;
+	margin-left:2%;
+	margin-top:30px;	
+	
+}
+
+#Cadastro-Denuncia{
+	width:324px;
+	height:50px;
+	margin-left:12%;
 	
 }
 
