@@ -16,12 +16,15 @@
 			Localização: <br/>
 			<input type="text" class="form-control" placeholder="Localização" name="localização"/><br/>
 			
-			 
+			<div id="select"> 
 			<select name="categoria">
 				<option >Selecione a Categoria</option>
 				<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
 			</select><br/><br/><br/><br/>
-			<input type="submit" value="Enviar Denuncia"/>	
+			</div>
+			<div id="bt-cadastra">
+			<input class="btn btn-primary" type="submit" value="Enviar Denuncia"/>	
+			</div>
 		</form>
 		</div>
 	</div>
