@@ -1,5 +1,6 @@
 package com.citycare.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,23 +58,27 @@ public class DenunciaController {
 	@RequestMapping(value="deletaDenuncia")
 	public ModelAndView deletaDenuncia(Denuncia denuncia){
 		dr.delete(denuncia);
-		return null;
-		
+		Usuario usuario = UsuarioSingleton.getInstance();
+		return profileUsuario(usuario);
 	}
 	
 	@RequestMapping(value="pesquisar")
 	public ModelAndView pesquisar(String descricao){
-		List<Categoria> categoria = cr.findByDescricaoContaining(descricao);
-		Categoria categoriaPesq = new Categoria();
-		categoriaPesq.setDescricao(categoria.get(0).getDescricao());
-		categoriaPesq.setId(categoria.get(0).getId());
-		Usuario usuario = UsuarioSingleton.getInstance();
-		List<Denuncia> denuncia = dr.findByCategoriaOrderByIdDesc(categoriaPesq);
-		List<Denuncia> qntdDenuncia = dr.findByUsuarioOrderByIdDesc(usuario);
 		ModelAndView mv = new ModelAndView("/denuncia/pesquisa");
+		List<Categoria> categoria = cr.findByDescricaoContaining(descricao);	
+		ArrayList<Denuncia> todasDenuncias = new ArrayList<Denuncia>();
+		for(Categoria c : categoria){
+			List<Denuncia> denuncia = dr.findByCategoriaOrderByIdDesc(c);
+			for(Denuncia d : denuncia){
+				todasDenuncias.add(d);
+			}
+		}
+		
+		Usuario usuario = UsuarioSingleton.getInstance();
+		List<Denuncia> qntdDenuncia = dr.findByUsuarioOrderByIdDesc(usuario);
+		mv.addObject("resultadoPesquisa", todasDenuncias);
 		mv.addObject("nomeUsuario", usuario.getNome());
 		mv.addObject("qntdDenuncias", qntdDenuncia.size());
-		mv.addObject("resultadoPesquisa", denuncia);
 		return mv;
 	}
 }
