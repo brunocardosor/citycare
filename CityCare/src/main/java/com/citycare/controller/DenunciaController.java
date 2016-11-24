@@ -27,8 +27,10 @@ public class DenunciaController {
 		Usuario usuario = UsuarioSingleton.getInstance();
 		List<Categoria> categoria = cr.findAll();
 		List<Denuncia> denuncia = dr.findAllByOrderByIdDesc();
+		List<Denuncia> qntdDenuncia = dr.findByUsuarioOrderByIdDesc(usuario);
 		ModelAndView mv = new ModelAndView("/denuncia/feed-denuncias");
 		mv.addObject("nomeUsuario", usuario.getNome());
+		mv.addObject("qntdDenuncias", qntdDenuncia.size());
 		mv.addObject("todosValoresCategoria",categoria);
 		mv.addObject("todosValoresDenuncia", denuncia);
 		return mv;	
@@ -39,6 +41,7 @@ public class DenunciaController {
 		usuario = UsuarioSingleton.getInstance();
 		List<Denuncia> denuncia = dr.findByUsuarioOrderByIdDesc(usuario);
 		ModelAndView mv = new ModelAndView("/usuario/profile");
+		mv.addObject("qntdDenuncias", denuncia.size());
 		mv.addObject("nomeUsuario", usuario.getNome());
 		mv.addObject("todosValoresDenuncia", denuncia);
 		return mv;
