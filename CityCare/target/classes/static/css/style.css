@@ -16,8 +16,8 @@
 	width:103px;
 	height:35px;
 	position:absolute;
-	margin-left:44.5%;
-	margin-top:35%;
+	margin-left:31.5%;
+	margin-top:7%;
 	}
 #bt-entrar{
 	width:65px;
@@ -28,7 +28,7 @@
 #b-vindo{
 	width:324px;
 	height:50px;
-	margin-left:30%;
+	margin-left:35.5%;
 }
 #alert-login{
 	width:324px;
@@ -38,8 +38,21 @@
 	width:50px;
 }
 
+
 #cdt{
-	width:50px;
-	height:20px;
+	width:500px;
+	height:520px;
+	position:absolute;
+	margin-left:33%;
+	margin-top:6%;
+	box-shadow: 0px 0px 10px 3px gray; 
+}
+ 
+#bt-cadastra{
+	width:60px;
+	height:70px;
+	margin-left: 32%;
+	margin-top:5%;
+	
 	
 }

@@ -4,30 +4,37 @@
 <meta charset="UTF-8"/>
 <title>Cadastro de Usuário</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
 <div>
 <div id="cdt" class="form-control">
+
+<form action="adicionaUsuario" method="post">
 <h2 id="b-vindo">Cadastro</h2>
-	<form action="adicionaUsuario" method="post">
 	<div class="form-group">
-	<input type="text" class="form-control" placeholder="nome" name="nome"/><br/>
+	Nome:<input type="text" class="form-control" placeholder="Nome" name="Nome"/>
 		</div>
 	
 	<div class="form-group">
-	<input type="text" class="form-control" placeholder="sobrenome" name="sobrenome"/><br/>
+	Sobrenome:<input type="text" class="form-control" placeholder="Sobrenome" name="Sobrenome"/>
 		</div>
 	<div class="form-group">
-	<input type="text" class="form-control" placeholder="CPF" name="CPF"/><br/>
+	CPF:<input type="text" class="form-control" placeholder="CPF" name="CPF"/>
 		</div>
 	<div class="form-group">
-	<input type="text" class="form-control" placeholder="EMAIL" name="EMAIL"/><br/>
+	Email:<input type="text" class="form-control" placeholder="Email" name="Email"/>
 		</div>
 	<div class="form-group">
-	<input type="password" class="form-control" placeholder="SENHA" name="SENHA"/><br/>
+	Senha:<input type="password" class="form-control" placeholder="Senha" name="Senha"/><br/>
 		</div>
+	<div id="bt-cadastra">
+	<input  class="btn btn-primary" type="submit" value="Finalizar Cadastro"/>
 	
-	<input type="submit" value="Finalizar Cadastro"/>
+	
+	</div>
+	
+	
 	</form>
 </div>
 </div>
