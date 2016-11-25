@@ -1,110 +1,121 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <title>CityCare - Profile</title>
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
-<body style="background-color:wheat;">
-<div>
+<body style="background-color: wheat;">
+	<div>
 
-<nav class="navbar col-md-12 navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-  <div class="div-card col-md-3" style="margin-top:0.5%; margin-left:8%; position:absolute;">
-		<div>
-			<div class="div-name-position"> 
-				<a href="/profile"> 
-					<span th:text="${nomeUsuario}" class="card-nome"></span>
-				</a>
-			</div> 
-			<div>
-				<div>
-					<ul class="card-info">
-						<li class="div-card-info">
-							<a href="/profile"><span><strong>Denuncias</strong></span>
-							<p></p>
-							<strong><span th:text="${qntdDenuncias}"></span></strong>
+		<nav class="navbar col-md-12 navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="div-card col-md-3"
+					style="margin-top: 0.5%; margin-left: 8%; position: absolute;">
+					<div>
+						<div class="div-name-position">
+							<a href="/profile"> <span th:text="${nomeUsuario}"
+								class="card-nome"></span>
 							</a>
-						</li>
+						</div>
+						<div>
+							<div>
+								<ul class="card-info">
+									<li class="div-card-info"><a href="/profile"><span><strong>Denuncias</strong></span>
+											<p></p> <strong><span th:text="${qntdDenuncias}"></span></strong>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<ul style="margin-top: 0.3%; margin-left: 34%;"
+						class="nav nav-tabs col-md-2">
+						<li role="presentation"><a href="/feed"
+							style="color: #337ab7">Home</a></li>
+
+						<li class="active" role="presentation"><a
+							style="color: #337ab7" href="/profile">Perfil</a></li>
 					</ul>
+				</div>
+				<div>
+					<form action="pesquisar" method="GET" class="nav-form col-md-3"
+						style="margin-top: 0.5%; margin-left: 4%;">
+						<div class="form-group">
+							<div>
+								<div class="input-group">
+									<input name="descricao" class="form-control"
+										placeholder="Categoria" /> <span class="input-group-btn">
+										<button type="submit" class="btn btn-default">
+											<i class="glyphicon glyphicon-search"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</form>
+					<button class="btn btn-warning btn-denuncia"
+						style="float: right; margin-top: 0.5%;">
+						<span> Denuncia &ensp; <i
+							class="glyphicon glyphicon-pencil"></i>
+						</span>
+					</button>
+				</div>
+			</div>
+
+		</nav>
+
+		<div class="col-md-offset-4 col-md-4" style="margin-top: 4%;">
+
+			<div th:each="valorDenuncia : ${todosValoresDenuncia}"
+				style="margin-top: 3%"
+				class="div-feed-posicao div-feed container col-md-12">
+				<div class="col-md-4 col-md-offset-9">
+					<button class="btn btn-default btn-edit">
+						<span> <i class="glyphicon glyphicon-menu-hamburger"></i>
+						</span>
+					</button>
+					<button class="btn btn-default btn-edit">
+						<a th:href="@{/deletaDenuncia/{codigo}(codigo=${valorDenuncia.id})}"> <span>
+								<i class="glyphicon glyphicon-remove"></i>
+						</span>
+						</a>
+
+
+
+					</button>
+				</div>
+				<div>
+					<div class="col-md-6">
+						<strong><span th:text="${valorDenuncia.usuario}"><strong></strong></span></strong>
+						<p></p>
+					</div>
+					<div style="text-align: right;" class="col-md-6">
+						<a href="#" class="categoriaDenuncia"> <strong><span
+								th:text="${valorDenuncia.categoria}"></span></strong>
+						</a>
+						<p></p>
+					</div>
+
+					<div class="col-md-12">
+						<p>
+							<span th:text="${valorDenuncia.descricao}"></span>
+						</p>
+					</div>
+
+					<div class="col-md-12">
+						<span style="color: gray" th:text="${valorDenuncia.localizacao}"></span>
+						<p></p>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
-  	<div>
-    <ul style="margin-top:0.3%; margin-left:34%;" class="nav nav-tabs col-md-2">
-  		<li role="presentation"><a href="/feed" style="color:#337ab7">Home</a></li>
-  		
-  		<li class="active" role="presentation"><a style="color:#337ab7" href="/profile">Perfil</a></li>	
-	</ul>	
-  </div>
-  <div>
-  	  <form action="pesquisar" method="GET" class="nav-form col-md-3" style=" margin-top: 0.5%; margin-left: 4%;">
-  		<div class="form-group">
-  		  	<div>
-  				<div class="input-group">
-  					<input name="descricao" class="form-control" placeholder="Categoria" />
-  						<span class="input-group-btn">
-  							<button type="submit" class="btn btn-default">
-  									<i class="glyphicon glyphicon-search"></i>
-  								</button>
-  							</span>
-  						</div>
-  					</div>
-  				</div>
-  			</form>
-  			<button class="btn btn-warning btn-denuncia" style="float:right; margin-top:0.5%;">
-  				<span> Denuncia &ensp; <i class="glyphicon glyphicon-pencil"></i> </span>
-  			</button>
-  			</div> 
- 		</div>
-		
-	</nav>
-	
-	<div class="col-md-offset-4 col-md-4" style="margin-top:4%;">
+	<script type="text/javascript" src="/js/boostrap.min.js"></script>
+	<script type="text/javascrip" src="/js/jquery-3.1.1.min.js"></script>
 
-		<div th:each="valorDenuncia : ${todosValoresDenuncia}" style="margin-top:3%" class="div-feed-posicao div-feed container col-md-12">
-		<div class="col-md-4 col-md-offset-9">
-			<button class="btn btn-default btn-edit">
-				<span>
-					<i class="glyphicon glyphicon-menu-hamburger"></i>
-				</span>
-			</button>
-			<button class="btn btn-default btn-edit">
-				<span>
-					<i class="glyphicon glyphicon-remove"></i>
-				</span>
-			</button>
-		</div>
-		<div>
-		<div class="col-md-6">
-			<strong><span th:text="${valorDenuncia.usuario}"><strong></strong></span></strong>
-		<p></p>
-		</div>
-		<div style="text-align: right;" class="col-md-6">
-			<a href="#" class="categoriaDenuncia">
-			<strong><span th:text="${valorDenuncia.categoria}"></span></strong>
-			</a>
-		<p></p>
-		</div>
-		
-		<div class="col-md-12">
-		<p>	
-			<span th:text="${valorDenuncia.descricao}"></span>
-		</p>
-		</div>
-			
-		<div class="col-md-12">
-			<span style="color:gray" th:text="${valorDenuncia.localizacao}"></span>
-			<p></p>
-		</div>
-		
-	</div>
-	</div>
-	</div>
-	</div>
-<script type="text/javascript" src="/js/boostrap.min.js"></script>
-<script type="text/javascrip" src="/js/jquery-3.1.1.min.js"></script>
-
-</body></html>
+</body>
+</html>
