@@ -3,6 +3,7 @@ package com.citycare.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.citycare.model.Categoria;
 import com.citycare.model.CategoriaRepository;
@@ -11,17 +12,13 @@ import com.citycare.model.CategoriaRepository;
 public class CategoriaController {
 	@Autowired
 	private CategoriaRepository cr;
-	
-	@RequestMapping(value="/C_Cadastro")
-	public String formCategoriaCadastro(){
-		return "/categoria/Cadastro";
-	}
-	
+	@Autowired
+	private DenunciaController dc;
 	
 	
 	@RequestMapping(value="/adicionaCategoria")
-	public String adicionaCategoria(Categoria categoria){
+	public ModelAndView adicionaCategoria(Categoria categoria){
 		cr.save(categoria);
-		return formCategoriaCadastro();
+		return dc.feedDenuncias();
 	}
 }

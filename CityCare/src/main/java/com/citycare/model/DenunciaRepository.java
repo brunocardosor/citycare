@@ -8,4 +8,5 @@ public interface DenunciaRepository extends JpaRepository<Denuncia, Long>{
 	public List<Denuncia> findAllByOrderByIdDesc();
 	public List<Denuncia> findByUsuarioOrderByIdDesc(Usuario usuario);
 	public List<Denuncia> findByCategoriaOrderByIdDesc(Categoria categoria);
+	public List<Denuncia> findById(Long id);
 }

@@ -45,10 +45,16 @@ public class LoginController {
 					return mv;
 				}
 			} else {
-			//tela com aviso de 
+			//tela com aviso de login ou senha incorretos 
 			ModelAndView mv = new ModelAndView("/usuario/login-screen");
 			mv.addObject("mensagem","Senha ou Login incorretos");
 			return mv;
 		}
+	}
+	@RequestMapping(value="efetuarLogout")
+	public ModelAndView logout(){
+		UsuarioSingleton.setInstance(null);
+		ModelAndView mv = new ModelAndView("/usuario/login-screen");
+		return mv;
 	}
 }

@@ -21,7 +21,7 @@
 			<div>
 				<div>
 					<ul class="card-info">
-						<li class="div-card-info">
+						<li class="div-card-info" style="margin-top:6%;">
 							<a href="/profile"><span><strong>Denuncias</strong></span>
 							<p></p>
 							<strong><span th:text="${qntdDenuncias}"></span></strong>
@@ -54,27 +54,36 @@
   					</div>
   				</div>
   			</form>
-  			<button class="btn btn-warning btn-denuncia" style="float:right; margin-top:0.5%;">
+  			<button type="button" class="btn btn-warning btn-denuncia" style="margin-top:0.5%;" data-toggle="modal" data-target="#denunciaModal">
   				<span> Denuncia &ensp; <i class="glyphicon glyphicon-pencil"></i> </span>
   			</button>
+  			
+  			<div style="margin-top:0.5%; float:right" class="col-md-1">
+				<a href="/efetuarLogout" class="btn btn-default">
+					<span>Logout</span>
+				</a>
+				</div>
   			</div> 
  		</div>
-		
+				
 	</nav>
 	
 	<div class="col-md-offset-4 col-md-4">
 		<div class="div-denuncia">
 		<form action="adicionaDenuncia" method="post">
-			<div class="col-md-6">
+			<div class="col-md-5">
 			<input name="localizacao" placeholder="Localização" class="form-control input-space"/>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<select name="categoria" class="form-control input-space">
 					<option>Categoria</option>
 					<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
 				</select>
 				
 			</div>
+			<a class="btn btn-primary" style="margin-top:1% ;float:left" data-toggle="modal" data-target="#modalCategoria"> 
+					<span><i class="glyphicon glyphicon-plus"></i></span>
+			</a>
 			<div class="col-md-12">
 				<textarea autofocus="autofocus" rows="4" maxlength="255" name="descricao" placeholder="Descrição" class="form-control input-space"></textarea>
 			</div>
@@ -109,7 +118,58 @@
 	</div>
 	</div>
 	</div>
-<script type="text/javascript" src="/js/boostrap.min.js"></script>
-<script type="text/javascrip" src="/js/jquery-3.1.1.min.js"></script>
-
-</body></html>
+	<div class="modal fade" id="denunciaModal">
+  				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3>Denuncia</h3>	
+						</div>
+						<div class="modal-body">
+								<form action="adicionaDenuncia" method="post">
+								<div class="col-md-6">
+								<input name="localizacao" placeholder="Localização" class="form-control input-space"/>
+								</div>
+								<div class="col-md-6">
+									<select name="categoria" class="form-control input-space">
+										<option>Categoria</option>
+										<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
+									</select>
+									
+								</div>
+								<div class="col-md-12">
+									<textarea rows="4" maxlength="255" name="descricao" placeholder="Descrição" class="form-control input-space"></textarea>
+								</div>
+								<div>
+									<button style="margin-left:70%; margin-top:2%" type="button" class="btn btn-defaul" data-dismiss="modal">Cancelar</button>
+									<input style="float:right; margin-right:3%; margin-top:2%" type="submit" class="btn btn-primary" value="Denunciar"/>
+								</div>
+							</form>	
+						</div>
+					</div>  				
+  				</div>
+  			</div>
+  	<div class="modal fade" id="modalCategoria">
+  		<div class="modal-dialog modal-sm">
+  			<div class="modal-content">
+  				<div class="modal-header">
+  					<h3>Adicionar Categoria</h3>
+  				</div>
+  				<div class="modal-body">
+  				<form action="adicionaCategoria" method="post">
+  					<div>
+  					<textarea name="descricao" rows="1" placeholder="Categoria" autofocus="autofocus" class="form-control"></textarea>
+					</div>
+					<div>
+					<button style="margin-left:36.4%; margin-top:2%" type="button" class="btn btn-defaul" data-dismiss="modal">Cancelar</button>
+					<input style="margin-top:2%" type="submit" value="Adicionar" class="btn btn-primary"/>  				
+  					</div>
+  				</form>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+	<script src="/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script src="http://127.0.0.1:35729/livereload.js?ext=Chrome&amp;extver=2.1.0"></script>	
+	</body>	
+</html>

@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	List<Categoria> findByDescricaoContaining(String descricao);
+	List<Categoria> findByDescricao(String descricao);
 }

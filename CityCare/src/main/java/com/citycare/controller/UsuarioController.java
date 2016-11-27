@@ -8,11 +8,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.citycare.model.Usuario;
 import com.citycare.model.UsuarioRepository;
+import com.citycare.model.UsuarioSingleton;
 @Controller
 public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepository ur;
+	@Autowired
+	private LoginController lc;
+
 	
 	@RequestMapping(value="/U_Cadastro")
 	public String formUsuarioCadastro(){
@@ -22,13 +26,20 @@ public class UsuarioController {
 	@RequestMapping(value="adicionaUsuario")
 	public String adicionaUsuario(Usuario usuario){
 		ur.save(usuario);
-		return formUsuarioCadastro();
+		return "/usuario/login-screen";
 	}
 	
+	@RequestMapping(value="desativarUsuario")
+	public ModelAndView desativarUsuario(){
+		Usuario usuario = UsuarioSingleton.getInstance();
+		usuario.setStatus(false);
+		ur.save(usuario);
+		return lc.logout();
+	}
 	
-	@RequestMapping(value="U_atualiza")
-	public ModelAndView formUsuarioAtualiza(){
-		ModelAndView mv = new ModelAndView("/usuario/AtualizaDados");
-		return mv;
+	@RequestMapping(value="atualizarUsuario")
+	public ModelAndView atualizarUsuario(Usuario usuario){
+		ur.save(usuario);
+		return lc.logout();
 	}
 }

@@ -1,121 +1,236 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <title>CityCare - Profile</title>
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
-<body style="background-color: wheat;">
-	<div>
+<body style="background-color:wheat;">
+<div>
 
-		<nav class="navbar col-md-12 navbar-default navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="div-card col-md-3"
-					style="margin-top: 0.5%; margin-left: 8%; position: absolute;">
-					<div>
-						<div class="div-name-position">
-							<a href="/profile"> <span th:text="${nomeUsuario}"
-								class="card-nome"></span>
-							</a>
-						</div>
-						<div>
-							<div>
-								<ul class="card-info">
-									<li class="div-card-info"><a href="/profile"><span><strong>Denuncias</strong></span>
-											<p></p> <strong><span th:text="${qntdDenuncias}"></span></strong>
-									</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+<nav class="navbar col-md-12 navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+  <div class="div-card col-md-3" style="margin-top:0.5%; margin-left:8%; position:absolute;">
+		<div class="col-md-1" style="float: right;">
+				<a>
+					<span><i class="glyphicon glyphicon-cog" data-toggle="modal" data-target="#editUsuario"></i></span>
+				</a>
+			</div>
+			<div class="div-name-position"> 
+				<a href="/profile"> 
+					<span th:text="${user.nome}" class="card-nome"></span>
+				</a>
+			</div>
+			<p></p> 
+			<div>
 				<div>
-					<ul style="margin-top: 0.3%; margin-left: 34%;"
-						class="nav nav-tabs col-md-2">
-						<li role="presentation"><a href="/feed"
-							style="color: #337ab7">Home</a></li>
-
-						<li class="active" role="presentation"><a
-							style="color: #337ab7" href="/profile">Perfil</a></li>
+					<ul class="card-info">
+						<li class="div-card-info">
+							<a href="/profile"><span><strong>Denuncias</strong></span>
+							<p></p>
+							<strong><span th:text="${qntdDenuncias}"></span></strong>
+							</a>
+						</li>
 					</ul>
 				</div>
-				<div>
-					<form action="pesquisar" method="GET" class="nav-form col-md-3"
-						style="margin-top: 0.5%; margin-left: 4%;">
-						<div class="form-group">
-							<div>
-								<div class="input-group">
-									<input name="descricao" class="form-control"
-										placeholder="Categoria" /> <span class="input-group-btn">
-										<button type="submit" class="btn btn-default">
-											<i class="glyphicon glyphicon-search"></i>
-										</button>
-									</span>
-								</div>
-							</div>
-						</div>
-					</form>
-					<button class="btn btn-warning btn-denuncia"
-						style="float: right; margin-top: 0.5%;">
-						<span> Denuncia &ensp; <i
-							class="glyphicon glyphicon-pencil"></i>
-						</span>
-					</button>
-				</div>
 			</div>
-
-		</nav>
-
-		<div class="col-md-offset-4 col-md-4" style="margin-top: 4%;">
-
-			<div th:each="valorDenuncia : ${todosValoresDenuncia}"
-				style="margin-top: 3%"
-				class="div-feed-posicao div-feed container col-md-12">
-				<div class="col-md-4 col-md-offset-9">
-					<button class="btn btn-default btn-edit">
-						<span> <i class="glyphicon glyphicon-menu-hamburger"></i>
-						</span>
-					</button>
-					<button class="btn btn-default btn-edit">
-						<a th:href="@{/deletaDenuncia/{codigo}(codigo=${valorDenuncia.id})}"> <span>
-								<i class="glyphicon glyphicon-remove"></i>
-						</span>
-						</a>
-
-
-
-					</button>
-				</div>
-				<div>
-					<div class="col-md-6">
-						<strong><span th:text="${valorDenuncia.usuario}"><strong></strong></span></strong>
-						<p></p>
-					</div>
-					<div style="text-align: right;" class="col-md-6">
-						<a href="#" class="categoriaDenuncia"> <strong><span
-								th:text="${valorDenuncia.categoria}"></span></strong>
-						</a>
-						<p></p>
-					</div>
-
-					<div class="col-md-12">
-						<p>
-							<span th:text="${valorDenuncia.descricao}"></span>
-						</p>
-					</div>
-
-					<div class="col-md-12">
-						<span style="color: gray" th:text="${valorDenuncia.localizacao}"></span>
-						<p></p>
-					</div>
-
-				</div>
-			</div>
-		</div>
+	
 	</div>
-	<script type="text/javascript" src="/js/boostrap.min.js"></script>
-	<script type="text/javascrip" src="/js/jquery-3.1.1.min.js"></script>
+  	<div>
+    <ul style="margin-top:0.3%; margin-left:34%;" class="nav nav-tabs col-md-2">
+  		<li role="presentation"><a href="/feed" style="color:#337ab7">Home</a></li>
+  		
+  		<li class="active" role="presentation"><a style="color:#337ab7" href="/profile">Perfil</a></li>	
+	</ul>	
+  </div>
+  <div>
+  	  <form action="pesquisar" method="GET" class="nav-form col-md-3" style=" margin-top: 0.5%; margin-left: 4%;">
+  		<div class="form-group">
+  		  	<div>
+  				<div class="input-group">
+  					<input name="descricao" class="form-control" placeholder="Categoria" />
+  						<span class="input-group-btn">
+  							<button type="submit" class="btn btn-default">
+  									<i class="glyphicon glyphicon-search"></i>
+  								</button>
+  							</span>
+  						</div>
+  					</div>
+  				</div>
+  			</form>
+  			<button type="button" class="btn btn-warning btn-denuncia" style="margin-top:0.5%;" data-toggle="modal" data-target="#denunciaModal">
+  				<span> Denuncia &ensp; <i class="glyphicon glyphicon-pencil"></i> </span>
+  			</button>
+  				<div style="margin-top:0.5%; float:right;" class="col-md-1">
+					<a href="/efetuarLogout" class="btn btn-default">
+						<span>Logout</span>
+					</a>
+				</div>
+  			</div> 
+ 		</div>
+	</nav>
+	
+	<div class="col-md-offset-4 col-md-4" style="margin-top:4%;">
 
-</body>
-</html>
+		<div th:each="valorDenuncia : ${todosValoresDenuncia}" style="margin-top:3%" class="div-feed-posicao div-feed container col-md-12">
+		<div class="col-md-4 col-md-offset-9">
+			<a type="button" class="btn btn-default btn-edit" data-toggle="modal" data-target="#editPostagemModal" th:href="@{atualizaDenuncia/{codigo}(codigo=${valorDenuncia.id})}">
+				<span>
+					<i class="glyphicon glyphicon-menu-hamburger"></i>
+				</span>
+			</a>
+			<a class="btn btn-default btn-edit" th:href="@{/deletaDenuncia/{codigo}(codigo=${valorDenuncia.id})}">
+				<span>
+					<i class="glyphicon glyphicon-remove"></i>
+				</span>
+			</a>
+		</div>
+		<div>
+		<div class="col-md-6">
+			<strong><span th:text="${valorDenuncia.usuario}"><strong></strong></span></strong>
+		<p></p>
+		</div>
+		<div style="text-align: right;" class="col-md-6">
+			<a th:href="@{/pesquisa/{descricao}(descricao=${valorDenuncia.categoria})}" class="categoriaDenuncia">
+			<strong><span th:text="${valorDenuncia.categoria}"></span></strong>
+			</a>
+		<p></p>
+		</div>
+		
+		<div class="col-md-12">
+		<p>	
+			<span th:text="${valorDenuncia.descricao}"></span>
+		</p>
+		</div>
+			
+		<div class="col-md-12">
+			<span style="color:gray" th:text="${valorDenuncia.localizacao}"></span>
+			<p></p>
+		</div>
+		
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="modal fade" id="denunciaModal">
+  				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3>Denuncia</h3>	
+						</div>
+						<div class="modal-body">
+								<form action="adicionaDenuncia" method="post">
+								<div class="col-md-6">
+								<input name="localizacao" placeholder="Localização" class="form-control input-space"/>
+								</div>
+								<div class="col-md-6">
+									<select name="categoria" class="form-control input-space">
+										<option>Categoria</option>
+										<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
+									</select>
+									
+								</div>
+								<div class="col-md-12">
+									<textarea rows="4" maxlength="255" name="descricao" placeholder="Descrição" class="form-control input-space"></textarea>
+								</div>
+								<div>
+									<button style="margin-left:70%; margin-top:2%" type="button" class="btn btn-defaul" data-dismiss="modal">Cancelar</button>
+									<input style="float:right; margin-right:3%; margin-top:2%" type="submit" class="btn btn-primary" value="Denunciar"/>
+								</div>
+							</form>	
+						</div>
+					</div>  				
+  				</div>
+  			</div>
+  	<div class="modal fade" id="editPostagemModal">
+  				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3>Denuncia</h3>	
+						</div>
+						<div class="modal-body">
+								<form action="adicionaDenuncia" method="post">
+								<div class="col-md-6">
+								<textarea rows="1" name="localizacao" placeholder="Localização" class="form-control input-space"></textarea>
+								</div>
+								<div class="col-md-6">
+									<select name="categoria" class="form-control input-space">
+										<option>Categoria</option>
+										<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
+									</select>
+									
+								</div>
+								<div class="col-md-12">
+									<textarea rows="4" maxlength="255" name="descricao" placeholder="Descrição" class="form-control input-space"></textarea>
+								</div>
+								<div>
+									<button style="margin-left:65%; margin-top:2%" type="button" class="btn btn-defaul" data-dismiss="modal">Cancelar</button>
+									<input style="float:right; margin-right:3%; margin-top:2%" type="submit" class="btn btn-primary" value="Denunciar"/>
+								</div>
+							</form>	
+						</div>
+					</div>  				
+  				</div>
+  			</div>
+  	<div class="modal fade" id="editUsuario">
+  		<div class="modal-dialog">
+  			<div class="modal-content">
+  				<div class="modal-header">
+  					<h3>Editar Usuário</h3>
+  				</div>
+  			<div class="modal-body">
+					<form action="atualizarUsuario" method="post">
+					<div>
+					<input type="hidden" th:field="${user.id}"/>
+						Nome:<br/>
+						<textarea rows="1" class="form-control" name="nome" th:text="${user.nome}"></textarea><br/>
+					</div>
+					<div>
+						Sobrenome:<br/>
+						<textarea rows="1" class="form-control" name="sobrenome" th:text="${user.sobrenome}"></textarea><br/>
+					</div>
+					<div>
+						CPF:<br/>
+						<textarea rows="1" maxlength="11" class="form-control" name="cpf" th:text="${user.cpf}"></textarea><br/>
+					</div>
+					<div>
+						E-mail:<br/>
+						<textarea rows="1" class="form-control" name="email" th:text="${user.email}"></textarea><br/>
+					</div>
+					<div>
+						Senha:<br/>
+						<textarea rows="1" class="form-control" name="senha" th:text="${user.senha}"></textarea><br/>
+					</div>
+					<div>
+						<a class="btn btn-warning" style="margin-top:2%" data-toggle="modal" data-target="#confirmacao" >
+							<span>Desativar Usuário</span>
+						</a>
+						<button style="margin-top:2%" type="button" class="btn btn-defaul" data-dismiss="modal">Cancelar</button>
+						<input style="margin-top:2%;" class="btn btn-primary" type="submit" value="Atualizar Cadastro"/>
+					</div>
+					</form>
+				</div>
+  			</div>
+  		</div>
+  	</div>
+  	<div class="modal fade" id="confirmacao">		
+  		<div class="modal-dialog">
+  			<div class="modal-content">
+  				<div class="modal-body">
+  				<h2>Você realmente deseja desativar sua conta?</h2>
+  				</div>
+  				<div class="modal-footer">
+  					<button type="button" class="btn btn-defaul" data-dismiss="modal">Não</button>
+	  				<a class="btn btn-primary" href="/desativarUsuario">
+	  					<span>Sim</span>
+	  				</a>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  	
+	<script src="/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script src="http://127.0.0.1:35729/livereload.js?ext=Chrome&amp;extver=2.1.0"></script>
+</body></html>

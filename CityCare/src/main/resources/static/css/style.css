@@ -82,21 +82,21 @@ textarea{
 
 .div-card{
 	border-radius: 10px;
-	width: 22%;
-	height: 237%;
+	width: 17%;
+	height: 190%;
 	background-color: white;
 	border: 1px solid #ccc;
 	box-shadow: 0px 1px 10px -1px;
 }
 .div-name-position{
-	margin-top: 9%;
+	margin-top: 5%;
 }
 .div-card-info{
 	background-color: #e7e7e7;
-	width: 131%;
+	width: 144.5%;
 	height: 3.5em; 	
 	border-radius: 0px 0px 10px 10px;
-	margin-left: -24.3%;
+	margin-left: -35%;
 }
 a{	
 	font-family: Arial;
@@ -115,7 +115,7 @@ ul{
 .card-nome{
 	color: black;
 	text-align: center;
-	font-size: 29.41px;
+	font-size: 15px;
 }
 .card-info{
 	color:orange;
@@ -134,7 +134,7 @@ ul{
 }
 
 .btn-denuncia{
-	margin-right:7%;
+	margin-left:1.5%;
 }
 
 .btn-edit{

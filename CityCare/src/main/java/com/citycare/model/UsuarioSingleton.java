@@ -1,7 +1,7 @@
 package com.citycare.model;
 
 public class UsuarioSingleton {
-	private static Usuario usuario;
+	private static Usuario usuario = null;
 	
 	public static Usuario getInstance(){
 		if(usuario == null){
