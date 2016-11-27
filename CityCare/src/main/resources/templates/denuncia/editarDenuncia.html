@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Atualizar Denuncia</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+	<div style=" height:22em; border:1px solid #ccc; border-radius:10px; box-shadow:0px 1px 12px -2px; margin-top:8%;" class="centralizado col-md-6">
+		<div>
+			<h2>Denuncia</h2>	
+		</div>
+			<form action="adicionaDenunciaId" method="post">
+				<input type="hidden"  th:field="${ValorDenunciaEdit.id}" />
+				<div class="col-md-6">
+					<textarea rows="1" name="localizacao" placeholder="Localização" class="form-control input-space" th:text="${ValorDenunciaEdit.localizacao}"></textarea>
+				</div>
+				<div class="col-md-6">
+					<select name="categoria" class="form-control input-space">
+						<option th:each="valor : ${todosValoresCategoria}" th:value="${valor.id}" th:text="${valor.descricao}"></option>
+					</select>		
+				</div>
+				<div class="col-md-12">
+				<textarea rows="4" maxlength="255" name="descricao" placeholder="Descrição" class="form-control input-space" th:text="${ValorDenunciaEdit.descricao}"></textarea>
+				</div>
+				<div>
+					<input style="float:right; margin-right:3%; margin-top:2%" type="submit" class="btn btn-primary" value="Atualizar"/>
+				</div>
+			</form>	
+		</div>
+</body>
+</html>

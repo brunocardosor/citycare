@@ -43,11 +43,13 @@ public class DenunciaController {
 	@RequestMapping(value="profile")
 	public ModelAndView profileUsuario(Usuario usuario){
 		usuario = UsuarioSingleton.getInstance();
+		List<Categoria> categoria = cr.findAll();
 		List<Denuncia> denuncia = dr.findByUsuarioOrderByIdDesc(usuario);
 		ModelAndView mv = new ModelAndView("/usuario/profile");
 		mv.addObject("user", usuario);
 		mv.addObject("qntdDenuncias", denuncia.size());
 		mv.addObject("todosValoresDenuncia", denuncia);
+		mv.addObject("todosValoresCategoria",categoria);
 		return mv;
 	}
 	
@@ -58,11 +60,12 @@ public class DenunciaController {
 		return profileUsuario(usuario);
 		}
 	@RequestMapping(value="atualizaDenuncia/{codigo}")
-	public void DenunciaEditPull(@PathVariable("codigo") Long id){
-		ModelAndView mv = new ModelAndView();
-		List<Denuncia> denuncia = dr.findById(id);
+	public  ModelAndView editarDenuncia(@PathVariable("codigo") Denuncia denuncia){
+		ModelAndView mv = new ModelAndView("/denuncia/editarDenuncia");
+		List<Categoria> categoria = cr.findAll();
 		mv.addObject("ValorDenunciaEdit", denuncia);
-		System.out.println("teste");
+		mv.addObject("todosValoresCategoria", categoria);
+		return mv;
 	}
 	
 	@RequestMapping(value="atualizarDenunciaId")
@@ -86,6 +89,8 @@ public class DenunciaController {
 		List<Denuncia> denuncia = dr.findByCategoriaOrderByIdDesc(categoria.get(0));
 		Usuario usuario = UsuarioSingleton.getInstance();
 		List<Denuncia> qntdDenuncia = dr.findByUsuarioOrderByIdDesc(usuario);
+		List<Categoria> cat= cr.findAll();
+		mv.addObject("todosValoresCategoria",cat);
 		mv.addObject("resultadoPesquisa", denuncia);
 		mv.addObject("nomeUsuario", usuario.getNome());
 		mv.addObject("qntdDenuncias", qntdDenuncia.size());
@@ -96,7 +101,8 @@ public class DenunciaController {
 	@RequestMapping(value="pesquisar")
 	public ModelAndView pesquisar(String descricao){
 		ModelAndView mv = new ModelAndView("/denuncia/pesquisa");
-		List<Categoria> categoria = cr.findByDescricaoContaining(descricao);	
+		List<Categoria> categoria = cr.findByDescricaoContaining(descricao);
+		List<Categoria> cat = cr.findAll();
 		ArrayList<Denuncia> todasDenuncias = new ArrayList<Denuncia>();
 		for(Categoria c : categoria){
 			List<Denuncia> denuncia = dr.findByCategoriaOrderByIdDesc(c);
@@ -109,6 +115,7 @@ public class DenunciaController {
 		mv.addObject("resultadoPesquisa", todasDenuncias);
 		mv.addObject("nomeUsuario", usuario.getNome());
 		mv.addObject("qntdDenuncias", qntdDenuncia.size());
+		mv.addObject("todosValoresCategoria",cat);
 		return mv;
 	}
 }

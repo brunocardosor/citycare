@@ -75,7 +75,7 @@
 		<p></p>
 		</div>
 		<div style="text-align: right;" class="col-md-6">
-			<a href="#" class="categoriaDenuncia">
+			<a th:href="@{/pesquisa/{descricao}(descricao=${valorDenuncia.categoria})}" class="categoriaDenuncia">
 			<strong><span th:text="${valorDenuncia.categoria}"></span></strong>
 			</a>
 		<p></p>
@@ -96,7 +96,7 @@
 	</div>
 	</div>
 	</div>
-			<div th:if class="modal fade" id="denunciaModal">
+			<div class="modal fade" id="denunciaModal">
   				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -104,7 +104,6 @@
 						</div>
 						<div class="modal-body">
 								<form action="adicionaDenuncia" method="post">
-								<input type="hidden" th:field=""/>
 								<div class="col-md-6">
 								<input name="localizacao" placeholder="Localização" class="form-control input-space"/>
 								</div>

@@ -98,7 +98,7 @@
 		<p></p>
 		</div>
 		<div style="margin-top:2%; text-align: right;" class="col-md-6">
-			<a href="#" class="categoriaDenuncia">
+			<a th:href="@{/pesquisa/{descricao}(descricao=${valorDenuncia.categoria})}" class="categoriaDenuncia">
 			<strong><span th:text="${valorDenuncia.categoria}"></span></strong>
 			</a>
 		<p></p>

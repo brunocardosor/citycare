@@ -75,7 +75,7 @@
 
 		<div th:each="valorDenuncia : ${todosValoresDenuncia}" style="margin-top:3%" class="div-feed-posicao div-feed container col-md-12">
 		<div class="col-md-4 col-md-offset-9">
-			<a type="button" class="btn btn-default btn-edit" data-toggle="modal" data-target="#editPostagemModal" th:href="@{atualizaDenuncia/{codigo}(codigo=${valorDenuncia.id})}">
+			<a type="button" class="btn btn-default btn-edit"  th:href="@{atualizaDenuncia/{codigo}(codigo=${valorDenuncia.id})}">
 				<span>
 					<i class="glyphicon glyphicon-menu-hamburger"></i>
 				</span>
@@ -143,7 +143,7 @@
 					</div>  				
   				</div>
   			</div>
-  	<div class="modal fade" id="editPostagemModal">
+  	<!-- div class="modal fade" id="editPostagemModal">
   				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -172,7 +172,7 @@
 						</div>
 					</div>  				
   				</div>
-  			</div>
+  			</div> -->
   	<div class="modal fade" id="editUsuario">
   		<div class="modal-dialog">
   			<div class="modal-content">
